@@ -21,12 +21,10 @@ files.map do |file|
     puts new_file
 
     # Check if folder exists
-    if File.directory?(new_file_folder)
-        # Move file into respective folder
-        FileUtils.mv current_file, new_file
-    # Else create folder
-    else
+    if !File.directory?(new_file_folder)
+        # Else create folder
         Dir.mkdir(new_file_folder)
-        FileUtils.mv current_file, new_file
     end
+    # Move file into respective folder
+    FileUtils.mv current_file, new_file
 end
